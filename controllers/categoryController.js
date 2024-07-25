@@ -26,7 +26,32 @@ const CategoryController = {
             console.error(err)
         }
     },
-    get:  async (req, res) => {
+    getAllPaginate: async (req, res) => {
+        try {
+             
+            const page = req.params.page
+            const limit = req.params.limit
+
+            console.log(page, limit)
+
+            const categories = await Category.find()
+                .skip((page - 1) * limit)
+                .limit(parseInt(limit));
+
+            const totalCategories = await Category.countDocuments();
+            console.log(totalCategories)
+             
+            res.json({
+                categories,
+                totalPages: Math.ceil(totalCategories / limit),
+                currentPage: parseInt(page)
+            });
+        } catch (err) {
+            console.error(err)
+        }
+    },
+
+    get: async (req, res) => {
         try {
             // id => URL
             const id = req.params.id;
@@ -80,8 +105,8 @@ const CategoryController = {
                 })
                 return;
             }
-           
-            res.status(200).json({ msg: "Categoria atualizada com sucesso", category})
+
+            res.status(200).json({ msg: "Categoria atualizada com sucesso", category })
         } catch (err) {
             console.error(err)
         }

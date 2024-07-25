@@ -23,14 +23,37 @@ const ProductController = {
     },
     getAll: async (req, res) => {
         try {
-             const product = await Product.find();
+            const product = await Product.find();
 
-             res.json(product);
+            res.json(product);
         } catch (err) {
             console.error(err)
         }
     },
-    get:  async (req, res) => {
+    getAllPaginate: async (req, res) => {
+        try {
+
+            const page = req.params.page
+            const limit = req.params.limit
+
+            const product = await Product.find()
+                .skip((page - 1) * limit)
+                .limit(parseInt(limit));
+
+            const totalProducts = await Product.countDocuments();
+
+
+            res.json({
+                product,
+                totalPages: Math.ceil(totalProducts / limit),
+                currentPage: parseInt(page)
+            });
+
+        } catch (err) {
+            console.error(err)
+        }
+    },
+    get: async (req, res) => {
         try {
             // id => URL
             const id = req.params.id;
@@ -88,13 +111,13 @@ const ProductController = {
                 })
                 return;
             }
-           
-            res.status(200).json({ msg: "Produto atualizado com sucesso", product})
+
+            res.status(200).json({ msg: "Produto atualizado com sucesso", product })
         } catch (err) {
             console.error(err)
         }
     }
-      
+
 };
 
 module.exports = ProductController;
