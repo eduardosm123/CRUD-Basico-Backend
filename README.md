@@ -17,6 +17,13 @@
   GET /api/category
 ```
 
+### Categorias
+#### Retorna todas as categorias com paginação
+
+```http
+  GET /api/category/:page&:limit
+```
+
 #### Retorna uma categoria
 
 ```http
@@ -58,6 +65,13 @@
 
 ```http
   GET /api/product
+```
+
+### Produtos
+#### Retorna todas as produtos com paginação
+
+```http
+  GET /api/product/:page&:limit
 ```
 
 #### Retorna um produto
