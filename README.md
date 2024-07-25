@@ -67,7 +67,7 @@
   GET /api/product
 ```
 
-### Produtos
+ 
 #### Retorna todas as produtos com paginação
 
 ```http
