@@ -31,8 +31,7 @@ const CategoryController = {
              
             const page = req.params.page
             const limit = req.params.limit
-
-            console.log(page, limit)
+ 
 
             const categories = await Category.find()
                 .skip((page - 1) * limit)

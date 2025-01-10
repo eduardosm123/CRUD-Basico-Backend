@@ -2,7 +2,7 @@
 # API CRUD básico
 
 - Esse projeto é uma api que permite realizar um CRUD de produtos e categorias.   
-- Não se esqueça de criar um .env com a string de conexão de nome MONGO_CONNECT
+- Não se esqueça de criar um .env com a string de conexão de nome MONGO_CONNECT na raiz do projeto
 - Codigo está na Branch master
 - Para executar localmente a aplicação execute o comando npm start
 
