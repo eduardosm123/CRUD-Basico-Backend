@@ -11,7 +11,10 @@
 - Javascript
 - Express.js
 - Mongoose
- 
+
+## Comando para executar a aplicação
+
+```npm start```
 
 ## Documentação da API
 
